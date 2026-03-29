@@ -1,7 +1,7 @@
 {
   "name": "psi-claw",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -29,5 +29,15 @@
     "eslint-config-next": "16.2.1",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PsiClaw/psi-claw.git"
+  },
+  "homepage": "https://github.com/PsiClaw/psi-claw",
+  "bugs": {
+    "url": "https://github.com/PsiClaw/psi-claw/issues"
+  },
+  "description": "Desktop agentic model workspace for PsiClaw."
 }
