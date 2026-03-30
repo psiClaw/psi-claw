@@ -1,39 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PsiClaw (ΨClaw)
 
-## Getting Started
+**A fine-tuned desktop companion model for OpenClaw — control your machine like magic.**
 
-First, run the development server:
+PsiClaw is the training grounds, evaluation harness, and operator console for a specialized VLM (vision-language model) built on top of [qwen3-vl-8b](https://lmstudio.ai/models/qwen/qwen3-vl-8b). It ships as the default desktop companion option inside OpenClaw for users who want a model that deeply understands and operates their macOS environment.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## What PsiClaw does
+
+PsiClaw operates across your **entire computing environment** — not just the browser:
+
+- **Browser** — navigate, search, fill forms, verify evidence, multi-hop research
+- **Native apps** — VS Code, Terminal, Slack, Finder, and more via system accessibility + Peekaboo
+- **File system** — read, organize, and act on files with appropriate confirmation gates
+- **Memory** — persistent user identity via OpenTrust (prediction-based, not static retrieval)
+
+It prefers **direct API calls** over browser DOM automation when an API skill is available (Unbrowse pattern), falling back to visual automation only when needed.
+
+---
+
+## Model
+
+| | |
+|---|---|
+| **Base model** | qwen3-vl-8b |
+| **Format (Mac mini 16GB)** | MLX 4BIT (5.78 GB) |
+| **Format (M3 Max 48GB)** | MLX 8BIT (9.87 GB) |
+| **Min hardware for users** | 8GB RAM (runs at ~5.8GB) |
+| **Agent framework** | Qwen-Agent (first-party, native tool calling) |
+| **Personalization** | OpenTrust (memory as reasoning) |
+
+---
+
+## Repo structure
+
+```
+psi-claw/
+├── docs/
+│   ├── psiclaw-training-plan.md     # Full training design + research sources
+│   └── psiclaw-system-prompt-v2.md  # System prompt used for fine-tuning
+├── src/
+│   └── app/
+│       ├── page.tsx          # Overview / landing
+│       ├── console/          # Operator console — observe, approve, deny
+│       ├── gym/              # Desktop Gym — task scenarios for training
+│       ├── traces/           # Trace explorer — replay + audit
+│       └── evals/            # Eval dashboard — success rate, interventions
+└── src/lib/
+    └── demo-data.ts          # Scenarios, task data, eval rows
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Running locally
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm install
+pnpm dev
+```
 
-## Learn More
+Open [http://localhost:3000](http://localhost:3000).
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
 
 ## License
 

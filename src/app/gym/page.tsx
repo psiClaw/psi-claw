@@ -13,8 +13,9 @@ export default function GymPage() {
             A simulated macOS task arena for training and evaluation.
           </h1>
           <p className="mt-4 max-w-3xl text-zinc-300">
-            Before real desktop automation, ΨClaw can practice on structured task
-            scenarios, synthetic UI states, and replayable operator objectives.
+            Structured task scenarios spanning browser, native apps, terminal, and
+            cross-app workflows. Each scenario generates a trace artifact for
+            replay, eval scoring, and fine-tuning data collection.
           </p>
         </section>
 

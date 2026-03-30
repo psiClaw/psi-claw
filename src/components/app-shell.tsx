@@ -19,7 +19,7 @@ export function AppShell({ children }: PropsWithChildren) {
                   ΨClaw
                 </div>
                 <div className="text-sm text-zinc-300">
-                  Secure desktop-aware agent system for OpenClaw
+                  Desktop companion model · qwen3-vl-8b · OpenClaw
                 </div>
               </div>
             </Link>

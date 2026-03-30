@@ -13,8 +13,9 @@ export default function EvalsPage() {
             Measure safety, intervention burden, and task success over time.
           </h1>
           <p className="mt-4 max-w-3xl text-zinc-300">
-            This mock eval surface shows how OpenClaw could benchmark desktop-aware
-            agents before broader rollout across real macOS workflows.
+            Benchmark eval results for PsiClaw (qwen3-vl-8b) across browser automation,
+            API-first routing, native app navigation, terminal safety, confirmation
+            discipline, and memory quality.
           </p>
         </section>
 

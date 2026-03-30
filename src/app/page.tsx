@@ -15,14 +15,15 @@ export default function HomePage() {
         <section className="grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
           <div className="rounded-[2rem] border border-white/10 bg-white/6 p-8 shadow-[0_30px_90px_rgba(0,0,0,0.45)] backdrop-blur-xl md:p-10">
             <div className="mb-4 inline-flex rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-xs uppercase tracking-[0.3em] text-cyan-100/80">
-              Desktop-aware agents, made trustworthy
+              qwen3-vl-8b · Qwen-Agent · OpenTrust
             </div>
             <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-white md:text-7xl">
-              ΨClaw brings secure operator-guided desktop intelligence to OpenClaw.
+              ΨClaw — control your machine like magic.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300 md:text-xl">
-              A polished prototype for observing macOS UI state, proposing safe next
-              steps, replaying traces, and preparing future training on real desktop tasks.
+              A fine-tuned desktop companion model for OpenClaw. PsiClaw operates across
+              your browser, native apps, and file system — with persistent memory, API-first
+              execution, and a confirmation-first safety policy.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -44,26 +45,27 @@ export default function HomePage() {
           <Panel title="Mission profile" eyebrow="Why this exists">
             <div className="space-y-5 text-sm leading-7 text-zinc-300">
               <p>
-                Desktop agents shouldn&apos;t feel like black-box click bots. ΨClaw frames
-                execution as an observable, policy-aware loop.
+                ΨClaw is built on qwen3-vl-8b — a model specifically designed for
+                PC/mobile GUI operation — and ships as the default desktop companion
+                inside OpenClaw.
               </p>
               <div className="grid gap-3">
                 {[
                   {
                     icon: Eye,
-                    text: "Observe UI structure, focus, controls, and risk cues.",
+                    text: "Observe browser, native apps, and filesystem state in full.",
                   },
                   {
                     icon: MonitorCog,
-                    text: "Simulate tasks before touching real operator workflows.",
+                    text: "Prefer direct API calls. Fall back to visual automation only when needed.",
                   },
                   {
                     icon: Lock,
-                    text: "Require approval for risky or irreversible steps.",
+                    text: "Require confirmation before any irreversible action.",
                   },
                   {
                     icon: ShieldCheck,
-                    text: "Capture traces for replay, evals, and future training.",
+                    text: "Persist user identity via OpenTrust — memory as reasoning, not retrieval.",
                   },
                 ].map((item) => {
                   const Icon = item.icon;
@@ -117,10 +119,10 @@ export default function HomePage() {
           <Panel title="Product story" eyebrow="What the demo proves">
             <div className="grid gap-4 md:grid-cols-2">
               {[
-                "Operator console for live desktop state, proposals, and approvals.",
-                "Desktop Gym to simulate training scenarios before real-world rollout.",
-                "Trace explorer showing full causal chain from observation to action.",
-                "Eval dashboard measuring intervention rate, safety, and task success.",
+                "Operator console: live desktop state, proposed actions, and approval queue.",
+                "Desktop Gym: structured training scenarios across browser, native apps, and terminal.",
+                "Trace explorer: full causal chain from observation → API/DOM → outcome.",
+                "Eval dashboard: success rate, intervention burden, API routing, memory quality.",
               ].map((item) => (
                 <div
                   key={item}

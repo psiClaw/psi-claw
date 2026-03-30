@@ -14,9 +14,9 @@ export default function ConsolePage() {
               Human-centered command for desktop-aware agent runs.
             </h1>
             <p className="mt-4 max-w-3xl text-zinc-300">
-              Observe app state, review action proposals, and approve only what feels
-              safe. This mock shows how ΨClaw could present desktop intelligence without
-              hiding the decision loop.
+              Observe the full desktop surface, review action proposals with confidence
+              and risk scores, and approve only what feels safe. ΨClaw never executes
+              irreversible actions without your sign-off.
             </p>
           </div>
           <div className="rounded-3xl border border-emerald-400/20 bg-emerald-400/10 px-5 py-4 text-sm text-emerald-100">
