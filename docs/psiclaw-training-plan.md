@@ -505,7 +505,72 @@ If Nova is the personalization layer, its memory should implement:
 
 ---
 
-## 7c. OpenAgents — Multi-Agent Networking Layer
+## 7c. Screenpipe — Observation and Training Data Layer
+
+**Repo:** `screenpipe/screenpipe`
+**What it is:** Continuous, event-driven screen + audio capture with local storage and an AI-queryable MCP interface.
+
+> "screenpipe turns your computer into a personal AI that knows everything you've done. record. search. automate. all local, all private, all yours."
+
+```
+screen + audio → local storage → AI (MCP / Pipes)
+```
+
+### Why this matters for PsiClaw
+
+**1. Training data collection**
+Screenpipe is a continuous passive recorder of real desktop state. For PsiClaw training:
+- Every screenshot is paired with the **accessibility tree** (OS-level structured data: buttons, labels, text fields)
+- Fallback to OCR when accessibility data isn't available
+- Audio (system + mic) with local Whisper transcription and speaker diarization
+- Run Screenpipe during normal daily work for a few weeks → thousands of grounded real-world desktop interaction episodes
+
+**2. The observation substrate PsiClaw needs**
+Without a system like Screenpipe, PsiClaw only sees the current moment.
+With it, the companion has a **searchable, time-indexed memory of everything that happened on screen** — which is what makes the difference between a reactive tool and a genuine desktop companion.
+
+**3. Pipes = scheduled agent traces**
+Pipes are scheduled AI agents defined as markdown files (`pipe.md` with prompt + schedule). Each pipe run is an observation → action → outcome trace — the exact format needed for PsiClaw training data.
+
+**4. Security model is right**
+Deterministic, OS-level permission gates on what data agents can access:
+- Allow/deny by app, window, content type
+- Time and day restrictions
+- Enforced at three layers (skill gating, agent interception, server middleware)
+- Not prompt-based. Cryptographic tokens per pipe.
+
+**5. MCP server**
+`claude mcp add screenpipe -- npx -y screenpipe` — zero config.
+Any MCP-compatible client can query screen history, recent context, and meeting transcriptions.
+Works with Claude Desktop, Cursor, VS Code, and Qwen-Agent.
+
+### Architecture position
+
+Screenpipe sits below everything else as the **observation substrate**:
+
+```
+Screenpipe (continuous capture, accessibility + OCR, audio, MCP)
+    ↓ provides real-time and historical context to
+PsiClaw (acts on what Screenpipe observed)
+    ↓ uses tools from
+Unbrowse → OpenCLI → Tandem → OpenAgents
+```
+
+### Training data collection workflow
+
+1. Install Screenpipe on personal MacBook (primary work machine)
+2. Run for 2–4 weeks during normal daily work
+3. Export labeled episodes via Pipes or direct SQLite query:
+   - screenshot + accessibility tree (state)
+   - action taken (what happened next)
+   - outcome (subsequent state)
+4. Use as fine-tuning dataset for qwen3-vl-8b LoRA on mlx-lm
+
+Minimum hardware: **8 GB RAM, ~5–10 GB/month disk**. CPU ~5–10% on Apple Silicon.
+
+---
+
+## 7d. OpenAgents — Multi-Agent Networking Layer
 
 **Repo:** `openagents-org/openagents`
 **What it is:** An agent networking platform that enables AI agents to discover each other, communicate in real time, and collaborate — with humans and with other agents.
